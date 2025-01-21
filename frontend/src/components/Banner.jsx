@@ -1,6 +1,6 @@
 import React from "react";
 import {useNavigate} from 'react-router-dom';
-import FooterImage from "../assets/assets_frontend/Footer.jpg";
+import FooterImage from "../assets/assets_frontend/footer.jpg";
 
 const Banner = () => {
     const navigate = useNavigate()
