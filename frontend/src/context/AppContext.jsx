@@ -13,7 +13,7 @@ export const AppProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [doctorToken, setDoctorToken] = useState(localStorage.getItem("doctorToken"));
 
-  const backendUrl = "http://localhost:4000";
+  const backendUrl = "https://doctorappointment-backend-7dqw.onrender.com";
   const navigate = useNavigate();
   const location = useLocation();
 
