@@ -16,7 +16,7 @@ connectCloudinary()
 //Middlewares
 app.use(express.json())
 app.use(cors({
-    origin: 'http://localhost:5173', // Add your frontend's development URL
+    origin: 'https://doctorappointment-frontend.onrender.com', // Add your frontend's development URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
     credentials: true, // Include credentials if required
   }));
