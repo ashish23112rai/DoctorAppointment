@@ -8,9 +8,9 @@ const Appointment = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [timeSlots, setTimeSlots] = useState([]);
   const { user, token, backendUrl } = useAppContext();
-  const [amount] = useState(200);
+  const [amount] = useState(500);
   const [bookedSlots, setBookedSlots] = useState([]);
-  console.log(user, token, backendUrl);
+  // console.log(user, token, backendUrl);
   
 
   // Generate dynamic dates for the current week starting from today
@@ -28,7 +28,7 @@ const Appointment = () => {
     }
     setDates(tempDates);
     setSelectedDate(tempDates[0]); // Default to the first date
-  }, []);
+  }, [setBookedSlots]);
 
   // Generate time slots for the selected date
   const generateTimeSlots = (startHour, endHour, intervalMinutes) => {
@@ -117,6 +117,7 @@ const Appointment = () => {
       if (response.data.success) {
         alert(`Appointment booked for ${selectedDate.day}, ${selectedDate.date} at ${selectedTime}`);
         fetchBookedSlots(selectedDate.fullDate)
+        setSelectedTime(null);
       } else {
         alert("Error booking appointment: " + response.data.message);
       }
@@ -144,7 +145,7 @@ const Appointment = () => {
           {/* Doctor's Photo */}
           <div className="w-48 h-48 rounded-full overflow-hidden shadow-md flex-shrink-0">
             <img
-              src="https://via.placeholder.com/200"
+              src="https://img.freepik.com/premium-photo/medical-concept-indian-beautiful-female-doctor-white-coat-with-stethoscope-waist-up-medical-student-woman-hospital-worker-looking-camera-smiling-studio-blue-background_185696-621.jpg?w=1060"
               alt="Doctor"
               className="w-full h-full object-cover"
             />
@@ -163,7 +164,7 @@ const Appointment = () => {
               personalized treatments.
             </p>
             <p className="text-lg font-semibold text-gray-100">
-              Appointment Fee: <span className="text-green-500">${amount}</span>
+              Appointment Fee: <span className="text-green-500">₹{amount}</span>
             </p>
           </div>
         </div>

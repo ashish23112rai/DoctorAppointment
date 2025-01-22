@@ -46,7 +46,7 @@ const MyAppointments = () => {
         toast.success(response.data.message);
         setAppointments((prev) =>
           prev.map((appt) =>
-            appt._id === id ? { ...appt, isCancelled: true } : appt
+            appt._id === id ? { ...appt, cancelled: true, isCompleted: true } : appt
           )
         );
       } else {
@@ -63,15 +63,15 @@ const MyAppointments = () => {
   };
 
   const handleReschedule = (id) => {
-    alert(`Appointment ID: ${id} rescheduling functionality will be available soon.`);
+    alert(`Appointment ID: ${id} Pay Online functionality will be available soon.`);
   };
 
   const categorizeAppointments = (appointments) => {
     const upcomingAppointments = appointments.filter(
-      (appointment) => !appointment.isCompleted
+      (appointment) => !appointment.isCompleted && !appointment.cancelled
     );
     const previousAppointments = appointments.filter(
-      (appointment) => appointment.isCompleted
+      (appointment) => appointment.isCompleted || appointment.cancelled
     );
     return { previousAppointments, upcomingAppointments };
   };
@@ -79,7 +79,7 @@ const MyAppointments = () => {
   const { previousAppointments, upcomingAppointments } = categorizeAppointments(appointments);
 
   if (loading) {
-    return <Loader/>;
+    return <Loader />;
   }
 
   if (error) {
@@ -147,7 +147,9 @@ const MyAppointments = () => {
               previousAppointments.map((appointment) => (
                 <div
                   key={appointment._id}
-                  className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-teal-500 transition duration-300"
+                  className={`bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-teal-500 transition duration-300 ${
+                    appointment.cancelled ? "border border-red-500" : ""
+                  }`}
                 >
                   <p className="text-lg font-semibold text-gray-300 mb-2">
                     Date:{" "}
@@ -161,8 +163,8 @@ const MyAppointments = () => {
                   <p className="text-lg font-semibold text-gray-300 mb-2">
                     Doctor: <span className="text-white">{appointment?.doctor || "N/A"}</span>
                   </p>
-                  <p className="text-gray-400">
-                    Notes: {appointment?.notes || "No notes available."}
+                  <p className={`text-gray-400 ${appointment.cancelled ? "text-red-500" : ""}`}>
+                    {appointment.cancelled ? "Cancelled" : appointment?.notes || "No notes available."}
                   </p>
                 </div>
               ))
