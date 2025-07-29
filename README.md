@@ -1,4 +1,3 @@
-text
 # 🚑 Doctor Clinic Appointment System
 
 Welcome to the **Doctor Clinic Appointment Web Application**! This full-stack MERN app enables patients to easily book appointments online while doctors manage their schedules through secure, dedicated dashboards.
@@ -9,6 +8,7 @@ Welcome to the **Doctor Clinic Appointment Web Application**! This full-stack ME
 
 - 🧑‍⚕️ **Doctor Portal:** Secure login, view/manage appointments and patient details.
 - 👩‍💻 **Patient Portal:** Register, log in, book, view, and manage appointments.
+- 🔗 **Live Demo:** [https://doctorappointment-frontend.onrender.com](https://doctorappointment-frontend.onrender.com)
 - 🔐 **JWT-based authentication** with distinct access for doctors and patients.
 - 🌐 **Responsive, intuitive UI** with React.js.
 - ⚙️ **RESTful backend API** (Node.js & Express).
@@ -34,21 +34,18 @@ Welcome to the **Doctor Clinic Appointment Web Application**! This full-stack ME
 git clone https://github.com/ashish23112rai/DoctorAppointment.git
 cd DoctorAppointment
 
-text
 
 2. **Start the backend:**
 cd backend
 npm install
 npm start
 
-text
 
 3. **Start the frontend:**
 cd ../frontend
 npm install
 npm start
 
-text
 
 4. Open your browser at `http://localhost:3000` to use the app!
 
@@ -59,7 +56,6 @@ DoctorAppointment/
 ├── frontend/ # React.js frontend
 └── README.md # Project documentation
 
-text
 
 ## 🤝 Contributing
 
